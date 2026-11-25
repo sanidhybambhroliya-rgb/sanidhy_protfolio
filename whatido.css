@@ -1,0 +1,80 @@
+/* ===== sidebar + top bar kadhi nakhya: stage akhi screen ma ===== */
+html,body{background:#06323d}
+.layout{height:100%}
+@media (max-width:900px){
+  body{overflow:hidden}
+  .layout{height:100vh;height:100dvh}
+  .stage{height:100%}
+}
+
+/* ===== WHAT I DO ===== */
+#whatido .huge{font-size:clamp(1.7rem,min(3.6vw,7vh),3.4rem)}
+#whatido .cols{gap:28px}
+#whatido .cols > div{display:flex;flex-direction:column;align-items:center;gap:14px;min-width:0}
+#whatido .cols .c{margin:0;font-size:.95rem}
+.viz{width:100%;height:clamp(130px,27vh,240px);display:flex;justify-content:center;align-items:center;position:relative}
+
+/* 1) tetris */
+#tetCanvas{height:100%;width:auto;display:block}
+
+/* 2) paint window (580x410 ma banavyu, JS scale kare chhe) */
+.fit{position:relative;width:100%;height:100%}
+.paintwin{position:absolute;left:50%;top:50%;width:580px;height:410px;
+  transform:translate(-50%,-50%) scale(var(--k,.5));transform-origin:center;
+  background:#0d4a53;border:2px solid #7fd6dc;border-radius:3px;text-align:left;
+  box-shadow:0 0 0 2px #06323d,0 24px 50px rgba(0,0,0,.4),0 0 40px rgba(232,255,0,.1);
+  font:600 17px Inter,system-ui,sans-serif;color:#d8f7f5}
+.pw-title{position:absolute;left:3px;right:3px;top:3px;height:28px;display:flex;align-items:center;gap:8px;padding:0 8px;
+  background:linear-gradient(90deg,#ffd0ef,#fff3c4 55%,#c4f5ff);color:#0b3d45;font-weight:700;font-size:16px}
+.pw-ico{width:14px;height:14px;border:2px solid #0b3d45;border-radius:3px;background:#fff}
+.pw-btns{margin-left:auto;display:flex;gap:4px}
+.pw-btns i{width:20px;height:18px;display:grid;place-items:center;font-style:normal;font-size:12px;background:#0d4a53;color:#d8f7f5;border:1px solid #06323d}
+.pw-menu{position:absolute;left:8px;top:34px;height:26px;display:flex;align-items:center;gap:16px;font-size:15px}
+.pw-tools{position:absolute;left:6px;top:64px;width:66px;display:grid;grid-template-columns:30px 30px;gap:3px;justify-content:center}
+.pw-tools i{height:28px;display:grid;place-items:center;font-style:normal;font-size:15px;background:#0b3d45;border:1px solid #2f8a93;color:#d8f7f5}
+.pw-tools i.on{background:#ffee33;color:#06323d;font-weight:800}
+.pw-canvas{position:absolute;left:78px;top:64px;width:436px;height:248px;background:#fff;border:2px solid #06323d;overflow:hidden}
+.pw-canvas svg{display:block;width:100%;height:100%}
+.pw-vs,.pw-hs{position:absolute;background:rgba(255,255,255,.14)}
+.pw-vs{left:518px;top:64px;width:16px;height:248px}
+.pw-hs{left:78px;top:316px;width:436px;height:16px}
+.pw-vs::after,.pw-hs::after{content:"";position:absolute;background:#7fd6dc;border-radius:2px;opacity:.7}
+.pw-vs::after{left:2px;right:2px;top:2px;height:60px}
+.pw-hs::after{top:2px;bottom:2px;left:2px;width:280px}
+.pw-pal{position:absolute;left:8px;top:342px;display:flex;gap:10px;align-items:center}
+.pw-cur{width:40px;height:34px;border:2px solid #7fd6dc;position:relative;background:#06323d}
+.pw-cur::after{content:"";position:absolute;right:3px;bottom:3px;width:14px;height:14px;background:#fff;border:1px solid #06323d}
+.pw-sw{display:grid;grid-template-columns:repeat(14,20px);grid-auto-rows:17px;gap:1px}
+.pw-sw i{border:1px solid rgba(0,0,0,.35)}
+.pw-status{position:absolute;left:3px;right:3px;bottom:3px;height:26px;display:flex;align-items:center;gap:8px;padding:0 8px;font-size:14px;border-top:1px solid #2f8a93}
+.pw-status span:first-child{flex:1}
+.pw-status span:last-child{width:84px;text-align:center;border:1px solid #2f8a93;padding:1px 0}
+.pw-tag{position:absolute;right:6px;top:-18px;background:#e8ff00;color:#06323d;font-size:15px;font-weight:700;padding:6px 12px;border-radius:3px;white-space:nowrap}
+.pw-tag::before{content:"➤";margin-right:8px;font-size:12px}
+
+/* 3) cubes */
+.cubewrap{perspective:800px;display:grid;place-items:center;width:100%;height:100%}
+.cubes{--s:clamp(32px,6.2vh,56px);--g:calc(var(--s)*.16);display:grid;grid-template-columns:repeat(3,var(--s));gap:var(--g);
+  transform-style:preserve-3d;animation:tiltGrid 8s ease-in-out infinite alternate}
+.cube{width:var(--s);height:var(--s);position:relative;transform-style:preserve-3d;
+  animation:cubeTumble 5.6s cubic-bezier(.65,0,.25,1) infinite;animation-delay:calc(var(--i)*-.35s)}
+.cube .f{position:absolute;inset:0;border-radius:calc(var(--s)*.1);
+  background:linear-gradient(135deg,#6ef4ff 0%,#ff9ae6 55%,#fff0b8 100%);box-shadow:0 0 16px rgba(255,154,230,.4)}
+.cube .fr{transform:translateZ(calc(var(--s)/2))}
+.cube .bk{transform:rotateY(180deg) translateZ(calc(var(--s)/2))}
+.cube .rt{transform:rotateY(90deg) translateZ(calc(var(--s)/2));filter:brightness(.85)}
+.cube .lf{transform:rotateY(-90deg) translateZ(calc(var(--s)/2));filter:brightness(.85)}
+.cube .tp{transform:rotateX(90deg) translateZ(calc(var(--s)/2));filter:brightness(.92)}
+.cube .bt{transform:rotateX(-90deg) translateZ(calc(var(--s)/2));filter:brightness(.78)}
+@keyframes tiltGrid{from{transform:rotateX(48deg) rotateZ(-32deg)}to{transform:rotateX(34deg) rotateZ(16deg)}}
+@keyframes cubeTumble{0%,30%{transform:rotateX(0) rotateY(0)}70%,100%{transform:rotateX(360deg) rotateY(360deg)}}
+
+@media (prefers-reduced-motion:reduce){
+  .cubes,.cube{animation:none!important}
+}
+
+/* ===== Festival Design: photo phone ma akho dekhay (kapay nahi) ===== */
+.fan .phone{width:min(280px,27vw);aspect-ratio:auto;height:auto}
+.fan .phone .screen{height:auto;aspect-ratio:var(--ar,9/16)}
+.fan .phone .screen img{width:100%;height:100%;min-height:0;object-fit:cover;transform:none!important}
+.fan .phone .notch{display:none}

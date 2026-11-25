@@ -1,0 +1,51 @@
+/* ===== INTRO: "TOO MUCH THOUGHT" glitch screen ===== */
+.intro{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;overflow:hidden;
+  background-color:#06323d;
+  background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
+  background-size:46px 46px}
+.intro::after{content:"";position:absolute;left:0;right:0;height:90px;top:-90px;
+  background:linear-gradient(transparent,rgba(232,255,0,.07),transparent);animation:scan 2.6s linear infinite}
+@keyframes scan{to{transform:translateY(calc(100vh + 180px))}}
+
+.glitch{position:relative;font-family:Inter,'Helvetica Neue',Arial,sans-serif;font-weight:500;
+  font-size:clamp(1.2rem,5.4vw,4.6rem);letter-spacing:.24em;margin-right:-.24em;white-space:nowrap;
+  color:#e8ff00;text-shadow:0 0 14px rgba(232,255,0,.65),0 0 34px rgba(232,255,0,.35);
+  animation:gMain 2.6s infinite}
+.glitch::before,.glitch::after{content:attr(data-text);position:absolute;left:0;top:0;white-space:nowrap;text-shadow:none}
+.glitch::before{color:#ff2bd6;transform:translateX(5px);animation:gA 2.6s infinite steps(1)}
+.glitch::after{color:#18f0ff;transform:translateX(-5px);animation:gB 2.6s infinite steps(1)}
+
+@keyframes gMain{
+  0%,28%,36%,62%,70%,100%{transform:none;opacity:1}
+  30%{transform:translateX(-6px) skewX(10deg)}
+  32%{transform:translateX(7px) skewX(-8deg);opacity:.7}
+  34%{transform:translateX(-3px)}
+  64%{transform:translateX(5px) skewX(-6deg);opacity:.6}
+  66%{transform:translateX(-7px) skewX(9deg)}
+  68%{transform:translateX(2px);opacity:.85}}
+@keyframes gA{
+  0%,28%,36%,62%,70%,100%{clip-path:inset(0 0 100% 0)}
+  29%{clip-path:inset(5% 0 75% 0)} 31%{clip-path:inset(55% 0 20% 0)} 33%{clip-path:inset(25% 0 50% 0)} 35%{clip-path:inset(75% 0 5% 0)}
+  63%{clip-path:inset(40% 0 35% 0)} 65%{clip-path:inset(10% 0 70% 0)} 67%{clip-path:inset(65% 0 10% 0)} 69%{clip-path:inset(30% 0 45% 0)}}
+@keyframes gB{
+  0%,28%,36%,62%,70%,100%{clip-path:inset(0 0 100% 0)}
+  29%{clip-path:inset(60% 0 15% 0)} 31%{clip-path:inset(15% 0 65% 0)} 33%{clip-path:inset(45% 0 30% 0)} 35%{clip-path:inset(5% 0 85% 0)}
+  63%{clip-path:inset(70% 0 5% 0)} 65%{clip-path:inset(35% 0 40% 0)} 67%{clip-path:inset(0 0 85% 0)} 69%{clip-path:inset(50% 0 25% 0)}}
+
+.intro.out{pointer-events:none;animation:introOut .8s forwards}
+@keyframes introOut{
+  0%{opacity:1}
+  12%{opacity:.35;transform:translateX(-14px) skewX(6deg)}
+  26%{opacity:1;transform:translateX(12px) skewX(-5deg)}
+  40%{opacity:.4;transform:translateX(-6px)}
+  54%{opacity:1;transform:none}
+  100%{opacity:0;visibility:hidden}}
+
+/* ===== THEME SWITCH: glitch transition ===== */
+.gfx{position:fixed;inset:0;z-index:9998;pointer-events:none;overflow:hidden;opacity:0}
+.gfx i{position:absolute;left:-5%;width:110%;display:block}
+
+@media (prefers-reduced-motion:reduce){
+  .glitch,.glitch::before,.glitch::after,.intro::after{animation:none!important}
+  .glitch::before,.glitch::after{display:none}
+}

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sanidhy – Graphic Designer Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="glitch.css">
+  <link rel="stylesheet" href="whatido.css">
+</head>
+<body>
+
+<!-- ===== INTRO (website khule tyare) ===== -->
+<div class="intro" id="intro" aria-hidden="true">
+  <h1 class="glitch" data-text="TOO MUCH THOUGHT">TOO MUCH THOUGHT</h1>
+</div>
+
+<div class="layout">
+
+<!-- ===== RIGHT: PORTFOLIO STAGE ===== -->
+  <section class="stage" id="stage" data-theme="dark">
+    <canvas id="bgCanvas" aria-hidden="true"></canvas>
+    <div class="track" id="track">
+
+      <!-- HOME -->
+      <div class="slide" id="home">
+        <div class="home-top">
+          <div>
+            <h1 class="display">Sanidhy</h1>
+            <p class="sub">Graphic Designer</p>
+          </div>
+          <p class="tags">VISUAL DESIGN ✦ BRANDING</p>
+        </div>
+        <div class="maze-wrap">
+          <canvas id="pacCanvas" width="700" height="420"
+                  aria-label="Maze game. Click to play and use arrow keys to move."></canvas>
+        </div>
+        <div class="maze-foot">
+          <div class="lives" id="pacLives"></div>
+          <p id="pacStatus">click the maze to play</p>
+          <span class="cube"></span>
+        </div>
+      </div>
+
+      <!-- ABOUT -->
+      <div class="slide" id="about">
+        <div class="about-wrap">
+          <figure class="polaroid">
+            <img src="images/profile.jpg" alt="" onerror="this.src='https://placehold.co/400x480?text=Photo'">
+            <figcaption>Creative mind, big dreams, and always ready to turn ideas into amazing designs!</figcaption>
+          </figure>
+          <div>
+            <h2 class="display huge">Hello,<br>I’m Sanidhy.</h2>
+            <h3 class="serif">Giving every pixel a personality.</h3>
+            <p class="body">I am a beginner Graphic Designer with basic knowledge of Adobe Photoshop, Adobe Illustrator, and CorelDRAW.</p>
+            <p class="body">I enjoy creating creative designs and learning new designing skills. I am always ready to improve my knowledge and explore new ideas.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- WHAT I DO -->
+      <div class="slide" id="whatido">
+        <div class="cols">
+          <div>
+            <h2 class="display huge">Product<br>design</h2>
+            <div class="viz"><canvas id="tetCanvas" aria-label="Blocks falling and stacking automatically"></canvas></div>
+            <p class="body c">Clean, thoughtful layouts where every piece fits perfectly.</p>
+          </div>
+          <div>
+            <h2 class="display huge">Color and<br>craft</h2>
+            <div class="viz"><div class="fit" id="paintFit"><div class="paintwin" id="paintWin" aria-label="A pencil drawing by itself"></div></div></div>
+            <p class="body c">Bold colours and hand-made details that give every design a personality.</p>
+          </div>
+          <div>
+            <h2 class="display huge">Packaging<br>design</h2>
+            <div class="viz"><div class="cubewrap"><div class="cubes" id="cubes" aria-label="Cubes rotating automatically"></div></div></div>
+            <p class="body c">Boxes and labels that look great on the shelf and feel great in the hand.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- WORK -->
+      <div class="slide" id="work">
+        <h2 class="display huge">My work</h2>
+        <div class="work-grid" id="workGrid"></div>
+      </div>
+
+      <!-- PITSTOPS -->
+      <div class="slide" id="pitstops">
+        <h2 class="display huge">Pitstops till now</h2>
+        <ul class="timeline">
+          <li><time>2023-24</time><div><h3 class="serif">Class 10th</h3><p>Ashadeep-1, Nana Varachha</p></div></li>
+          <li><time>2025-26</time><div><h3 class="serif">Class 12th</h3><p>Ashadeep IIT, Nana Varachha</p></div></li>
+          <li><time>2026-27</time><div><h3 class="serif">Graphic Design and Digital Marketing</h3><p>NCIT, Nana Varachha</p></div></li>
+        </ul>
+      </div>
+
+      <!-- CONTACT -->
+      <div class="slide" id="contact">
+        <h2 class="display huge">Psst.<br>Over here.</h2>
+        <p class="body">Hiring, collaborating, or just want to talk pixels? Let’s chat!</p>
+        <p class="serif link">✉ sanidhyy13@gmail.com <button class="copy" data-copy="sanidhyy13@gmail.com">copy</button></p>
+        <div class="btns">
+          <a class="cta" href="mailto:sanidhyy13@gmail.com">Say hello</a>
+          <a class="cta" href="images/resume.pdf" download>Get the resume</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- BOTTOM PILL NAV + THEME TOGGLE -->
+    <div class="bottom">
+      <nav class="pillnav" id="pillnav">
+        <a href="#home" class="on">Home</a>
+        <a href="#about">About me</a>
+        <a href="#whatido">What I do</a>
+        <a href="#work">Work</a>
+        <a href="#pitstops">Pitstops</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="theme" id="themeBtn"><span id="themeLabel">dark mode</span><i></i></button>
+    </div>
+  </section>
+</div>
+
+<script src="projects.js"></script>
+<script src="script.js"></script>
+<script src="bg.js"></script>
+<script src="game.js"></script>
+<script src="glitch.js"></script>
+<script src="whatido.js"></script>
+</body>
+</html>
